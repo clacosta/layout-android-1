@@ -24,7 +24,7 @@ public class ListaPacoteAdapter extends BaseAdapter {
     private final List<Pacote> pacotes;
     private final Context context;
 
-    public ListaPacoteAdapter(List<Pacote> pacotes, Context context){
+    public ListaPacoteAdapter(List<Pacote> pacotes, Context context) {
         this.pacotes = pacotes;
         this.context = context;
     }
@@ -50,27 +50,40 @@ public class ListaPacoteAdapter extends BaseAdapter {
                 .inflate(R.layout.item_pacote, parent, false);
         Pacote pacote = pacotes.get(position);
 
-        TextView local = viewCriada.findViewById(R.id.item_pacote_local);
-        local.setText(pacote.getLocal());
+        mostraLocal(viewCriada, pacote);
+        mostraImagem(viewCriada, pacote);
+        mostraDias(viewCriada, pacote);
+        mostraPreco(viewCriada, pacote);
 
-        ImageView imagem = viewCriada.findViewById(R.id.item_pacote_imagem);
-        Resources resources = context.getResources();
-        int idDoDrawable = resources.getIdentifier(pacote.getImagem(), "drawable", context.getPackageName());
-        Drawable drawableImagemPacote = resources.getDrawable(idDoDrawable);
-        imagem.setImageDrawable(drawableImagemPacote);
+        return viewCriada;
+    }
 
-        TextView dias = viewCriada.findViewById(R.id.item_pacote_dias);
-        int quantidadeDeDias = pacote.getDias();
-        String diasEmTexto = quantidadeDeDias + " " + (quantidadeDeDias > 1 ? "dias" : "dia");
-        dias.setText(diasEmTexto);
-
-        TextView preco = viewCriada.findViewById(R.id.item_pacote_preco);
+    private void mostraPreco(View view, Pacote pacote) {
+        TextView preco = view.findViewById(R.id.item_pacote_preco);
         NumberFormat formatoBrasileiro = DecimalFormat.getCurrencyInstance(new Locale("pt", "br"));
         BigDecimal precoDoPacote = pacote.getPreco();
         String moedaBrasileira = formatoBrasileiro.format(precoDoPacote);
         preco.setText(moedaBrasileira);
+    }
 
-        return viewCriada;
+    private void mostraDias(View view, Pacote pacote) {
+        TextView dias = view.findViewById(R.id.item_pacote_dias);
+        int quantidadeDeDias = pacote.getDias();
+        String diasEmTexto = quantidadeDeDias + " " + (quantidadeDeDias > 1 ? "dias" : "dia");
+        dias.setText(diasEmTexto);
+    }
+
+    private void mostraImagem(View view, Pacote pacote) {
+        ImageView imagem = view.findViewById(R.id.item_pacote_imagem);
+        Resources resources = context.getResources();
+        int idDoDrawable = resources.getIdentifier(pacote.getImagem(), "drawable", context.getPackageName());
+        Drawable drawableImagemPacote = resources.getDrawable(idDoDrawable);
+        imagem.setImageDrawable(drawableImagemPacote);
+    }
+
+    private void mostraLocal(View view, Pacote pacote) {
+        TextView local = view.findViewById(R.id.item_pacote_local);
+        local.setText(pacote.getLocal());
     }
 
 }
