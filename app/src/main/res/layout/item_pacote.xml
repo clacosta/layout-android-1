@@ -2,7 +2,8 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" >
 
     <ImageView
         android:id="@+id/item_pacote_imagem"
@@ -14,13 +15,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.0"
         android:src="@drawable/sao_paulo_sp"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        tools:src="@sample/pacotes.json/pacotes/imagem"/>
 
     <TextView
         android:id="@+id/item_pacote_local"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="São Paulo"
+        tools:text="@sample/pacotes.json/pacotes/local"
         app:layout_constraintStart_toStartOf="@id/item_pacote_imagem"
         app:layout_constraintEnd_toEndOf="@id/item_pacote_imagem"
         app:layout_constraintTop_toTopOf="@id/item_pacote_imagem"
@@ -50,7 +52,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/item_pacote_divisor"
-        android:text="2 dias"
+        tools:text="@sample/pacotes.json/pacotes/dias"
         app:layout_constraintHorizontal_bias="0.0"
         android:layout_margin="8dp"
         android:textSize="16sp"
@@ -62,7 +64,7 @@
          android:layout_height="wrap_content"
          app:layout_constraintStart_toStartOf="@id/item_pacote_dias"
          app:layout_constraintTop_toBottomOf="@id/item_pacote_dias"
-         android:text="R$ 243,99"
+         tools:text="@sample/pacotes.json/pacotes/preco"
          android:textSize="20sp"
          android:textColor="@android:color/holo_green_dark"/>
 
