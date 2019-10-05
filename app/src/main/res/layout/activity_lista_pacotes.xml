@@ -7,7 +7,7 @@
     tools:context=".ui.activity.ListaPacotesActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/lista_pacotes_banner"
         android:layout_width="0dp"
         android:layout_height="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,7 +18,7 @@
         app:srcCompat="@android:color/holo_purple" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/lista_pacotes_especial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
@@ -35,7 +35,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/lista_pacotes_local"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -43,15 +43,17 @@
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="@+id/lista_pacotes_especial"
+        app:layout_constraintTop_toBottomOf="@+id/lista_pacotes_especial" />
 
     <ListView
+        android:id="@+id/lista_pacotes_listview"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/lista_pacotes_banner"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/item_pacote"/>
 
 </android.support.constraint.ConstraintLayout>
